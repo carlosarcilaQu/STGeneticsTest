@@ -132,10 +132,13 @@
     {      
         try
         {
-            var filePath = @"D:\Application portfolio\BlazorApp2\BlazorApp2\JsonDatabase\json.json";
+            var basePath = AppDomain.CurrentDomain.BaseDirectory;
+            var relativePath = Path.Combine(basePath, "..", "..", "..", "JsonDatabase", "json.json");
             var data = new RootObject { animals = Animales };
             var json = JsonConvert.SerializeObject(data, Formatting.Indented);
-            File.WriteAllText(filePath, json);
+            File.WriteAllText(relativePath, json);
+
+
         }
         catch (Exception ex)
         {

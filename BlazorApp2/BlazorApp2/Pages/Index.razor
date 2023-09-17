@@ -146,7 +146,7 @@
 
 
             var basePath = AppDomain.CurrentDomain.BaseDirectory;
-            var relativePath = Path.Combine(basePath, "JsonDatabase", "json.json");
+            var relativePath = Path.Combine(basePath, "..", "..", "..", "JsonDatabase", "json.json");
 
             var json = File.ReadAllText(relativePath);
             var data = JsonConvert.DeserializeObject<RootObject>(json);
@@ -240,7 +240,7 @@
             modalVisible = false;
 
             var basePath = AppDomain.CurrentDomain.BaseDirectory;
-            var relativePath = Path.Combine(basePath, "JsonDatabase", "json.json");
+            var relativePath = Path.Combine(basePath, "..", "..", "..", "JsonDatabase", "json.json");
 
             var json = File.ReadAllText(relativePath);
             var data = JsonConvert.DeserializeObject<RootObject>(json);
