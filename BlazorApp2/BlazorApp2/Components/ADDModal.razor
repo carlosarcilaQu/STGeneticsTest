@@ -1,0 +1,172 @@
+﻿@using Newtonsoft.Json;
+@using static BlazorApp2.Sweetalert.SweetAlertClasses;
+@inject SwaAlerts _swaAlerts;
+@inject SweetAlertService Sweet;
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="modal fade show" id="myModal" style="@(modalVisible ? "display:block;" : "display:none;") background-color:#00000080; overflow-y:auto;" aria-modal="true" role="dialog">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 20px;">
+            <div class="modal-header " style="border-bottom: 0 none; background-color:WHITE; border-radius: 20px;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:relative; top:0; right:0; " @onclick="@CancelModal">
+                    &times;
+                </button>
+            </div>
+            <div class="row " style="text-align:center;height:100%;">
+                <div class="form-body" style="height:100%;">
+                    <RadzenTemplateForm TItem="NewAnimal" Data=@newAnimal Submit=@AddAnimal InvalidSubmit=@OnInvalidSubmit Style="display: inline-grid; margin-bottom:5vh">
+
+                        <h5>Add your animal</h5>
+                        <RadzenLabel class="spaceElement">Name</RadzenLabel>
+                        <RadzenTextBox Name="NameAnimal" @bind-Value=@newAnimal.Name Placeholder="Name"></RadzenTextBox>
+                        <RadzenRequiredValidator Component="NameAnimal" Text="required field..." Popup=false Style="position: relative" />
+
+                        <RadzenLabel class="spaceElement">Breed</RadzenLabel>
+                        <RadzenDropDown class="spaceElement" Name="BreedAnimal" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@newAnimal.Breed Placeholder="Select..."
+                                        Data=@genericListBreed TextProperty="Name" ValueProperty="Name">
+                        </RadzenDropDown>
+                        <RadzenRequiredValidator Component="BreedAnimal" Text="required field..." Popup=false Style="position: relative" />
+
+                        <RadzenLabel class="spaceElement">Sex</RadzenLabel>
+                        <RadzenDropDown class="spaceElement" Name="dropsex" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@newAnimal.Sex Placeholder="Select..."
+                                        Data=@genericListsex TextProperty="Name" ValueProperty="Name">
+                        </RadzenDropDown>
+                        <RadzenRequiredValidator Component="dropsex" Text="required field..." Popup=false Style="position: relative" />
+
+                        <RadzenLabel class="spaceElement">BirthDate</RadzenLabel>
+                        <RadzenDatePicker Name="DateAnimal" TValue="DateTime" @bind-Value="newAnimal.BirthDate"
+                                          Max="DateTime.Today.AddDays(0)" Style="display: block" Placeholder="BirthDate" DateFormat="yyyy/MM/dd" />
+                        <RadzenRequiredValidator Component="DateAnimal" Text="Campo requerido..." Popup=false Style="position: relative" />
+
+                        <RadzenLabel class="spaceElement">Price</RadzenLabel>
+                        <RadzenNumeric Name="PriceAnimal" @bind-Value=@newAnimal.Price Placeholder="Price" Min=1></RadzenNumeric>
+                        <RadzenRequiredValidator Component="PriceAnimal" Text="required field..." Popup=false Style="position: relative" />
+
+                        <RadzenButton ButtonType="ButtonType.Submit" Text="Add" Style="margin-top:5vh;"></RadzenButton>
+                        <RadzenButton Style="background-color:#c6c6c6;color:#000000" Click="@CloseModal" class="spaceElement">cancel</RadzenButton>
+                    </RadzenTemplateForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code{
+
+    [Parameter]
+    public bool modalVisible { get; set; }
+    [Parameter]
+    public List<Animal> Animales { get; set; }
+    [Parameter]
+    public List<GenericList> genericListsex { get; set; }
+    [Parameter]
+    public List<GenericList> genericListstatus { get; set; }
+    [Parameter]
+    public List<GenericList> genericListBreed { get; set; }
+    [Parameter] 
+    public Action OnAddAnimalCompleted { get; set; }
+
+    private NewAnimal newAnimal = new NewAnimal();
+
+
+
+
+    private void AddAnimal()
+    {
+        try
+        {
+            Animales.Add(new Animal
+                {
+                    AnimalId = Animales.Max(a => a.AnimalId) + 1,
+                    Name = newAnimal.Name,
+                    Breed = newAnimal.Breed,
+                    BirthDate = Convert.ToDateTime(newAnimal.BirthDate.ToString("yyyy-MM-dd")),
+                    Sex = newAnimal.Sex,
+                    Price = newAnimal.Price,
+                    Status = "Active"
+                });
+
+            GuardarAnimalesEnJson();
+
+            ShowWarningAlertWithIcon showWarningAlertWithIcon = new ShowWarningAlertWithIcon()
+                {
+                    Title = "Save completed",
+                    Mensaje = "Your data has been saved",
+                    IconColor = "#006729",
+                    ConfirmButtonText = "Ok",
+                    ConfirmButtonColor = "#EB0029"
+                };
+            CloseModal();
+            _swaAlerts.ShowWarningAlertWithIcon(showWarningAlertWithIcon, async (confirmed) =>
+            {
+                if (confirmed)
+                {
+                    await InvokeAsync(async () =>
+                    {
+                        OnAddAnimalCompleted?.Invoke();
+                    });
+                }
+            });
+        }
+        catch (Exception ex)
+        {
+            ShowWarningAlertWithIcon showWarningAlertWithIcon = new ShowWarningAlertWithIcon()
+                {
+                    Title = "Save completed",
+                    Mensaje = ex.ToString(),
+                    IconColor = "#FF0000",
+                    ConfirmButtonText = "Ok",
+                    ConfirmButtonColor = "#EB0029"
+                };
+            _swaAlerts.ShowWarningErrorWithIcon(showWarningAlertWithIcon);
+        }
+        
+        
+    }
+    private void GuardarAnimalesEnJson()
+    {      
+        try
+        {
+            var filePath = @"D:\Application portfolio\BlazorApp2\BlazorApp2\JsonDatabase\json.json";
+            var data = new RootObject { animals = Animales };
+            var json = JsonConvert.SerializeObject(data, Formatting.Indented);
+            File.WriteAllText(filePath, json);
+        }
+        catch (Exception ex)
+        {
+            ShowWarningAlertWithIcon showWarningAlertWithIcon = new ShowWarningAlertWithIcon()
+                {
+                    Title = "Save completed",
+                    Mensaje = ex.ToString(),
+                    IconColor = "#FF0000",
+                    ConfirmButtonText = "Ok",
+                    ConfirmButtonColor = "#EB0029"
+                };
+            _swaAlerts.ShowWarningErrorWithIcon(showWarningAlertWithIcon);
+        }
+    }
+
+    private void CloseModal()
+    {
+        modalVisible = false;
+
+        newAnimal = new NewAnimal();
+    }
+
+    private void ShowModal()
+    {
+        modalVisible = true;
+    }
+    private void CancelModal()
+    {
+        modalVisible = false;
+    }
+
+    private void OnInvalidSubmit(FormInvalidSubmitEventArgs args)
+    {
+
+    }
+}

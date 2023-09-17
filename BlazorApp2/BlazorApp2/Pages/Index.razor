@@ -1,0 +1,384 @@
+﻿@page "/Animals"
+@using Newtonsoft.Json; 
+@using static BlazorApp2.Sweetalert.SweetAlertClasses;
+@inject SwaAlerts _swaAlerts;
+@inject SweetAlertService Sweet;
+@inject IJSRuntime JSRuntime
+
+<div style="text-align:center;max-width:85vw;">
+    <RadzenButton Click="ShowModal" style="margin-bottom:2vh">Add new animal</RadzenButton>
+    @if (Animales.Count(x => x.IsSelected == true) >= 1)
+    {
+        <RadzenButton Click="ShowModalPay" style="margin-bottom:2vh">go pay</RadzenButton>
+    }
+    
+    <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" AllowAlternatingRows="false" FilterMode="FilterMode.Advanced" AllowSorting="true" PageSize="10" AllowPaging="true" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true"
+                    Data="@Animales" TItem="Animal" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive">
+        <Columns>
+            <RadzenDataGridColumn TItem="Animal" Property="AnimalId" Title="AnimalId"  />
+            <RadzenDataGridColumn TItem="Animal" Property="Name" Title="Name">
+                <Template Context="animal">
+    
+                    <div @onmousedown='() => SelectCell(animal, "Name")'>
+                        <RadzenTextBox @bind-Value='animal.Name' @onblur='() => EndEdit(animal, "Name")' />
+                    </div>
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="Animal" Property="Breed" Title="Breed" >
+                <Template Context="animal">
+                    <div @onmousedown='() => SelectCell(animal, "Breed")'>
+                        @*<RadzenTextBox @bind-Value='animal.Breed' @onblur='() => EndEdit(animal, "Breed")' />*@
+                        <RadzenDropDown Data=@genericListBreed TextProperty="Name" ValueProperty="Name" @bind-Value='animal.Breed' Change='() => EndEdit(animal, "Breed")' />
+                    </div>
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="Animal" Property="BirthDate" Title="BirthDate">
+                <Template Context="animal">
+                    <div @onmousedown='() => SelectCell(animal, "BirthDate")'>
+                        <RadzenDatePicker @bind-Value='animal.BirthDate' Change='() => EndEdit(animal, "BirthDate")' DateFormat="yyyy-MM-dd" />
+                    </div>
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="Animal" Property="Sex" Title="Sex">
+                <Template Context="animal">
+                    <div @onmousedown='() => SelectCell(animal, "Sex")'>
+                        <RadzenDropDown Data=@genericListsex TextProperty="Name" ValueProperty="Name" @bind-Value='animal.Sex' Change='() => EndEdit(animal, "Sex")' />
+                    </div>
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="Animal" Property="Price" Title="Price" >
+                <Template Context="animal">
+                    <div @onmousedown='() => SelectCell(animal, "Price")'>
+                        @*<RadzenTextBox @bind-Value='animal.Price' @onblur='() => EndEdit(animal, "Price")' />*@
+                        <RadzenNumeric TValue="int" @bind-Value=@animal.Price Change='() => EndEdit(animal, "Price")' Min=1></RadzenNumeric>
+                    </div>
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="Animal" Property="Status" Title="Status">
+                <Template Context="animal">
+                    <div @onmousedown='() => SelectCell(animal, "Status")'>
+                        <RadzenDropDown Data=@genericListstatus TextProperty="Name" ValueProperty="Name" @bind-Value='animal.Status' Change='() => EndEdit(animal, "Status")' />
+                    </div>
+                </Template>
+            </RadzenDataGridColumn>
+            <RadzenDataGridColumn TItem="Animal" Property="IsSelected" Title="Select">
+                <Template Context="animal">
+                    @if (animal.Status == "Active")
+                    {
+                        <RadzenCheckBox @bind-Value="animal.IsSelected" @onclick="CalculateTotalPrice" />
+                    }
+                </Template>
+            </RadzenDataGridColumn>
+        </Columns>
+        
+    </RadzenDataGrid>
+    <div class="total-container" style="display:flex">
+        <p style="color: blue; font-weight: bold;margin:1%">Total is: <span style="color:#000"> @total</span> </p>
+        <p style="color: blue; font-weight: bold;margin:1%">Discount is:<span style="color:#000"> @discount</span>  %</p>
+        <p style="color: blue; font-weight: bold;margin:1%">Total Discount is: <span style="color:#000"> @totalDiscount</span></p>
+        <p style="color: blue; font-weight: bold;margin:1%">shipping is:<span style="color:#000"> @shipping</span> </p>
+        <p style="color: blue; font-weight: bold;margin:1%">freight value is:<span style="color:#000"> @freightvalue</span></p>
+    </div>
+</div>
+
+
+<BlazorApp2.Components.ADDModal modalVisible=@modalVisible Animales=@Animales genericListsex=@genericListsex genericListstatus=@genericListstatus genericListBreed="genericListBreed" OnAddAnimalCompleted="HandleAddAnimalCompleted"></BlazorApp2.Components.ADDModal>
+
+@if (Animales.Count(x=> x.IsSelected == true) >= 1 && BuyAnimal)
+{
+    <BlazorApp2.Components.BusinessModal business="Business" />
+}
+
+
+<style>
+    .DropdownMatriculas {
+        height: 60px !important;
+        font-size: 18px !important;
+        padding-top: 15px !important;
+        border-radius: 25px !important;
+    }
+    .spaceElement{
+        margin-top: 1vh;
+    }
+</style>
+
+
+
+@code {
+    private List<Animal> Animales = new List<Animal>();
+    private List<Animal> PaginatedAnimals = new List<Animal>();
+    private List<Animal> SelectedAnimals = new List<Animal>();
+    private int pageIndex = 0;
+    private Animal selectedAnimal; 
+    private string selectedProperty;
+    List<GenericList> genericListsex = new();
+    List<GenericList> genericListstatus = new();
+    List<GenericList> genericListBreed = new();
+
+    public BusinessModalClass Business = new();
+
+    public decimal total;
+    public decimal totalDiscount;
+    public decimal shipping;
+    public decimal discount;
+    public decimal freightvalue;
+    public bool BuyAnimal;
+
+    protected override void OnInitialized()
+    {
+        try
+        {
+            genericListsex.Add(new GenericList { Id = 1, Name = "Female" });
+            genericListsex.Add(new GenericList { Id = 2, Name = "Male" });
+
+            genericListstatus.Add(new GenericList { Id = 1, Name = "Active" });
+            genericListstatus.Add(new GenericList { Id = 2, Name = "Inactive" });
+
+
+            genericListBreed.Add(new GenericList { Id = 1, Name = "Beefmaster" });
+            genericListBreed.Add(new GenericList { Id = 2, Name = "Charolais" });
+            genericListBreed.Add(new GenericList { Id = 1, Name = "Simmental" });
+            genericListBreed.Add(new GenericList { Id = 2, Name = "Aberdeen Angus" });
+            genericListBreed.Add(new GenericList { Id = 1, Name = "Brangus" });
+            genericListBreed.Add(new GenericList { Id = 2, Name = "Santa Gertrudis" });
+            genericListBreed.Add(new GenericList { Id = 1, Name = "Limousin" });
+            genericListBreed.Add(new GenericList { Id = 2, Name = "Belgian Blue" });
+
+
+            var filePath = @"D:\Application portfolio\BlazorApp2\BlazorApp2\JsonDatabase\json.json"; 
+            var json = File.ReadAllText(filePath);
+            var data = JsonConvert.DeserializeObject<RootObject>(json);
+            Animales = data.animals;
+            PaginatedAnimals = Animales.Skip(pageIndex * 10).Take(10).ToList();
+
+        }
+        catch (Exception ex)
+        {
+            ShowWarningAlertWithIcon showWarningAlertWithIcon = new ShowWarningAlertWithIcon()
+            {
+                Title = "Save completed",
+                Mensaje = ex.ToString(),
+                    IconColor = "#FF0000",
+                ConfirmButtonText = "Ok",
+                ConfirmButtonColor = "#EB0029"
+            };
+            _swaAlerts.ShowWarningErrorWithIcon(showWarningAlertWithIcon);
+        }
+    }
+
+    private void HandleAddAnimalCompleted()
+    {
+        try{
+            JSRuntime.InvokeVoidAsync("location.reload");
+        }
+        catch (Exception ex)
+        {
+            ShowWarningAlertWithIcon showWarningAlertWithIcon = new ShowWarningAlertWithIcon()
+                {
+                    Title = "Save completed",
+                    Mensaje = ex.ToString(),
+                    IconColor = "#FF0000",
+                    ConfirmButtonText = "Ok",
+                    ConfirmButtonColor = "#EB0029"
+                };
+            _swaAlerts.ShowWarningErrorWithIcon(showWarningAlertWithIcon);
+        }
+
+    }
+
+    private void SelectCell(Animal animal, string property)
+    {
+
+        try
+        {
+            selectedAnimal = animal;
+            selectedProperty = property;
+        }
+        catch (Exception ex)
+        {
+            ShowWarningAlertWithIcon showWarningAlertWithIcon = new ShowWarningAlertWithIcon()
+                {
+                    Title = "Save completed",
+                    Mensaje = ex.ToString(),
+                    IconColor = "#FF0000",
+                    ConfirmButtonText = "Ok",
+                    ConfirmButtonColor = "#EB0029"
+                };
+            _swaAlerts.ShowWarningErrorWithIcon(showWarningAlertWithIcon);
+        }
+    }
+
+
+    private void EndEdit(Animal animal, string property)
+    {
+        try
+        {
+            var filePath = @"D:\Application portfolio\BlazorApp2\BlazorApp2\JsonDatabase\json.json";
+            var json = File.ReadAllText(filePath);
+            var data = JsonConvert.DeserializeObject<RootObject>(json);
+
+            var animalToUpdate = data.animals.FirstOrDefault(a => a.AnimalId == animal.AnimalId);
+            if (animalToUpdate != null)
+            {
+                switch (property)
+                {
+                    case "Name":
+                        animalToUpdate.Name = animal.Name;
+                        break;
+                    case "Breed":
+                        animalToUpdate.Breed = animal.Breed;
+                        break;
+                    case "BirthDate":
+                        animalToUpdate.BirthDate = animal.BirthDate;
+                        break;
+                    case "Sex":
+                        animalToUpdate.Sex = animal.Sex;
+                        break;
+                    case "Price":
+                        animalToUpdate.Price = animal.Price;
+                        break;
+                    case "Status":
+                        animalToUpdate.Status = animal.Status;
+                        break;
+                }
+
+
+                var selectedAnimalInList = SelectedAnimals.FirstOrDefault(a => a.AnimalId == animal.AnimalId);
+                if (selectedAnimalInList != null)
+                {
+                    selectedAnimalInList.IsSelected = animal.IsSelected;
+                }
+            }
+
+            if (SelectedAnimals.Any(a => a.IsSelected))
+            {
+                Animales.ForEach(a =>
+                {
+                    var selectedAnimalInList = SelectedAnimals.FirstOrDefault(sa => sa.AnimalId == a.AnimalId);
+                    if (selectedAnimalInList != null)
+                    {
+                        a.IsSelected = selectedAnimalInList.IsSelected;
+                    }
+                });
+            }
+
+            var updatedJson = JsonConvert.SerializeObject(data, Formatting.Indented);
+            File.WriteAllText(filePath, updatedJson);
+
+            selectedAnimal = null;
+            selectedProperty = null;
+
+
+        }
+        catch (Exception ex)
+        {
+            ShowWarningAlertWithIcon showWarningAlertWithIcon = new ShowWarningAlertWithIcon()
+            {
+                Title = "Save completed",
+                Mensaje = ex.ToString(),
+                IconColor = "#FF0000",
+                ConfirmButtonText = "Ok",
+                ConfirmButtonColor = "#EB0029"
+            };
+            _swaAlerts.ShowWarningErrorWithIcon(showWarningAlertWithIcon);
+        }
+    }
+    private void CalculateTotalPrice()
+    {
+        try
+        {
+            total = 0;
+            totalDiscount = 0;
+            shipping = 0;
+            discount = 0;
+
+            foreach (var item in Animales)
+            {
+                if (!item.IsSelected)
+                {
+                    continue;
+                }
+
+                decimal itemPrice = item.Price;
+
+                if (Animales.Count(a => a.AnimalId == item.AnimalId && a.IsSelected) > 5)
+                {
+                    itemPrice -= itemPrice * 0.05m;
+                }
+
+                total += itemPrice;
+                shipping = total;
+            }
+            if (Animales.Count(a => a.IsSelected) > 10)
+            {
+                discount = 3;
+                totalDiscount = shipping * 0.03m;
+                shipping -= totalDiscount;
+            }
+            if ((Animales.Count(a => a.IsSelected) <= 20 && Animales.Count(a => a.IsSelected) >= 1) )
+            {
+                freightvalue = 1000;
+                shipping += 1000;
+            }
+            else
+            {
+                freightvalue = 0;
+                shipping -= 1000;
+            }
+
+
+            Business.freightvalue = freightvalue;
+            Business.total = total;
+            Business.totalDiscount = totalDiscount;
+            Business.shipping = shipping;
+            Business.discount = discount;
+            Business.Animales = Animales.Where(x => x.IsSelected).ToList();
+
+        }
+        catch (Exception ex)
+        {
+            ShowWarningAlertWithIcon showWarningAlertWithIcon = new ShowWarningAlertWithIcon()
+                {
+                    Title = "Save completed",
+                    Mensaje = ex.ToString(),
+                    IconColor = "#FF0000",
+                    ConfirmButtonText = "Ok",
+                    ConfirmButtonColor = "#EB0029"
+                };
+            _swaAlerts.ShowWarningErrorWithIcon(showWarningAlertWithIcon);
+        }
+
+    }
+
+    #region addanimal
+
+
+
+    private async Task OnSubmit(NewAnimal formularioVehiculoAfectado)
+    {
+
+    }
+    #endregion
+
+
+    #region Modal
+    private bool modalVisible = false;
+
+    private void ShowModal()
+    {
+        modalVisible = true;
+    }
+    private void ShowModalPay()
+    {
+        BuyAnimal = true;      
+        
+        Business.modalVisible = BuyAnimal;
+    }
+    private void CancelModal()
+    {
+        modalVisible = false;
+    }
+    #endregion
+
+    
+}
