@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WujMijIN2OI0MKoI5wec4Wvfm54YIoKXI6uZCT+v77g=",
+  "Hash": "DGXWoNwCWP5+atMIJdL8V4+3AUVQ/IQHfgvsdw0CO6k=",
   "Source": "BlazorApp2",
   "BasePath": "_content/BlazorApp2",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "BlazorApp2\\wwwroot",
       "Source": "BlazorApp2",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "Pattern": "**"
     }
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "C:\\Users\\junio\\.nuget\\packages\\radzen.blazor\\4.15.14\\staticwebassets\\Radzen.Blazor.js"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\bundle\\BlazorApp2.styles.css",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\bundle\\BlazorApp2.styles.css",
       "SourceId": "BlazorApp2",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "BlazorApp2.styles.css",
       "AssetKind": "All",
@@ -1170,13 +1170,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\bundle\\BlazorApp2.styles.css"
+      "OriginalItemSpec": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\bundle\\BlazorApp2.styles.css"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BlazorApp2.bundle.scp.css",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BlazorApp2.bundle.scp.css",
       "SourceId": "BlazorApp2",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "BlazorApp2.bundle.scp.css",
       "AssetKind": "All",
@@ -1187,13 +1187,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BlazorApp2.bundle.scp.css"
+      "OriginalItemSpec": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BlazorApp2.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\site.css",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\css\\site.css",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\favicon.png",
+      "Identity": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\favicon.png",
       "SourceId": "BlazorApp2",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Application portfolio\\BlazorApp2\\BlazorApp2\\wwwroot\\",
+      "ContentRoot": "D:\\GITHUB\\STGeneticsTest\\BlazorApp2\\BlazorApp2\\wwwroot\\",
       "BasePath": "_content/BlazorApp2",
       "RelativePath": "favicon.png",
       "AssetKind": "All",

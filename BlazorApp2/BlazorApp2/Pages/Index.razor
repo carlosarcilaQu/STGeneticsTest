@@ -82,7 +82,7 @@
 </div>
 
 
-<BlazorApp2.Components.ADDModal modalVisible=@modalVisible Animales=@Animales genericListsex=@genericListsex genericListstatus=@genericListstatus genericListBreed="genericListBreed" OnAddAnimalCompleted="HandleAddAnimalCompleted"></BlazorApp2.Components.ADDModal>
+<BlazorApp2.Components.ADDModal modalVisible=@modalVisible Animales=@Animales genericListsex=@genericListsex genericListstatus=@genericListstatus genericListBreed="genericListBreed" OnAddAnimalCompleted="HandleAddAnimalCompleted" CloseModalIndex="HandleCloseCompleted"></BlazorApp2.Components.ADDModal>
 
 @if (Animales.Count(x=> x.IsSelected == true) >= 1 && BuyAnimal)
 {
@@ -145,8 +145,10 @@
             genericListBreed.Add(new GenericList { Id = 2, Name = "Belgian Blue" });
 
 
-            var filePath = @"D:\Application portfolio\BlazorApp2\BlazorApp2\JsonDatabase\json.json"; 
-            var json = File.ReadAllText(filePath);
+            var basePath = AppDomain.CurrentDomain.BaseDirectory;
+            var relativePath = Path.Combine(basePath, "JsonDatabase", "json.json");
+
+            var json = File.ReadAllText(relativePath);
             var data = JsonConvert.DeserializeObject<RootObject>(json);
             Animales = data.animals;
             PaginatedAnimals = Animales.Skip(pageIndex * 10).Take(10).ToList();
@@ -186,6 +188,28 @@
 
     }
 
+    private void HandleCloseCompleted()
+    {
+        try
+        {
+            modalVisible = false;
+        }
+        catch (Exception ex)
+        {
+            ShowWarningAlertWithIcon showWarningAlertWithIcon = new ShowWarningAlertWithIcon()
+                {
+                    Title = "Save completed",
+                    Mensaje = ex.ToString(),
+                    IconColor = "#FF0000",
+                    ConfirmButtonText = "Ok",
+                    ConfirmButtonColor = "#EB0029"
+                };
+            _swaAlerts.ShowWarningErrorWithIcon(showWarningAlertWithIcon);
+        }
+
+    }
+
+
     private void SelectCell(Animal animal, string property)
     {
 
@@ -213,8 +237,12 @@
     {
         try
         {
-            var filePath = @"D:\Application portfolio\BlazorApp2\BlazorApp2\JsonDatabase\json.json";
-            var json = File.ReadAllText(filePath);
+            modalVisible = false;
+
+            var basePath = AppDomain.CurrentDomain.BaseDirectory;
+            var relativePath = Path.Combine(basePath, "JsonDatabase", "json.json");
+
+            var json = File.ReadAllText(relativePath);
             var data = JsonConvert.DeserializeObject<RootObject>(json);
 
             var animalToUpdate = data.animals.FirstOrDefault(a => a.AnimalId == animal.AnimalId);
@@ -263,7 +291,7 @@
             }
 
             var updatedJson = JsonConvert.SerializeObject(data, Formatting.Indented);
-            File.WriteAllText(filePath, updatedJson);
+            File.WriteAllText(relativePath, updatedJson);
 
             selectedAnimal = null;
             selectedProperty = null;

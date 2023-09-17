@@ -45,7 +45,7 @@
                         <RadzenRequiredValidator Component="PriceAnimal" Text="required field..." Popup=false Style="position: relative" />
 
                         <RadzenButton ButtonType="ButtonType.Submit" Text="Add" Style="margin-top:5vh;"></RadzenButton>
-                        <RadzenButton Style="background-color:#c6c6c6;color:#000000" Click="@CloseModal" class="spaceElement">cancel</RadzenButton>
+                        <RadzenButton Style="background-color:#c6c6c6;color:#000000" Click="@CancelModal" class="spaceElement">cancel</RadzenButton>
                     </RadzenTemplateForm>
                 </div>
             </div>
@@ -68,6 +68,8 @@
     public List<GenericList> genericListBreed { get; set; }
     [Parameter] 
     public Action OnAddAnimalCompleted { get; set; }
+    [Parameter]
+    public Action CloseModalIndex { get; set; }
 
     private NewAnimal newAnimal = new NewAnimal();
 
@@ -163,6 +165,7 @@
     private void CancelModal()
     {
         modalVisible = false;
+        CloseModalIndex?.Invoke();
     }
 
     private void OnInvalidSubmit(FormInvalidSubmitEventArgs args)

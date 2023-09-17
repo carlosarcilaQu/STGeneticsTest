@@ -36,3 +36,41 @@ D:\Application portfolio\BlazorApp2\BlazorApp2\bin\Debug\net7.0\Newtonsoft.Json.
 D:\Application portfolio\BlazorApp2\BlazorApp2\bin\Debug\net7.0\Radzen.Blazor.dll
 D:\Application portfolio\BlazorApp2\BlazorApp2\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll
 D:\Application portfolio\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.csproj.CopyComplete
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\appsettings.Development.json
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\appsettings.json
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\JsonDatabase\json.json
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\BlazorApp2.staticwebassets.runtime.json
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\BlazorApp2.exe
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\BlazorApp2.deps.json
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\BlazorApp2.runtimeconfig.json
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\BlazorApp2.dll
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\BlazorApp2.pdb
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\CurrieTechnologies.Razor.SweetAlert2.dll
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\Radzen.Blazor.dll
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.csproj.AssemblyReference.cache
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.GeneratedMSBuildEditorConfig.editorconfig
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.AssemblyInfoInputs.cache
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.AssemblyInfo.cs
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.csproj.CoreCompileInputs.cache
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.MvcApplicationPartsAssemblyInfo.cache
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.RazorAssemblyInfo.cache
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.RazorAssemblyInfo.cs
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\staticwebassets\msbuild.BlazorApp2.Microsoft.AspNetCore.StaticWebAssets.props
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\staticwebassets\msbuild.build.BlazorApp2.props
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.BlazorApp2.props
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.BlazorApp2.props
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\staticwebassets.pack.json
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\staticwebassets.build.json
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\staticwebassets.development.json
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\scopedcss\bundle\BlazorApp2.styles.css
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\scopedcss\projectbundle\BlazorApp2.bundle.scp.css
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.csproj.CopyComplete
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.dll
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\refint\BlazorApp2.dll
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.pdb
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\BlazorApp2.genruntimeconfig.cache
+D:\GITHUB\STGeneticsTest\BlazorApp2\BlazorApp2\obj\Debug\net7.0\ref\BlazorApp2.dll
